@@ -1,0 +1,12 @@
+[package]
+name = "rusty-kernel-tools"
+version = "0.1.0"
+authors = ["Timo Betcke <timo.betcke@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "rusty_kernel_tools"
+
+[dependencies]
+num = "0.4"
+ndarray = "0.15"
