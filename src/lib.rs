@@ -1,5 +1,5 @@
 //! This crate defines basic data structures and types used throughout
-//! the other `rusty-fast-solver` creates.
+//! the other `rusty-fast-solver` crates.
 
 pub mod particle_container;
 pub mod core;

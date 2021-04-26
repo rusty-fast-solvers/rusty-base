@@ -15,14 +15,13 @@ pub trait ParticleContainerAccessor {
     fn targets(&self) -> ArrayView2<Self::FloatingPointType>;
 }
 
-/// The basic data structure of this library for sources and targets
-/// that are owned by the structure.
+/// The basic data structure for sources and targets that are owned.
 pub struct ParticleContainer<T: RealType> {
     sources: Array2<T>,
     targets: Array2<T>,
 }
 
-/// Create a new particle container
+/// Create a new particle container and transfer ownership to it.
 pub fn make_particle_container_owned<T: RealType>(
     sources: Array2<T>,
     targets: Array2<T>,
@@ -30,6 +29,7 @@ pub fn make_particle_container_owned<T: RealType>(
     ParticleContainer { sources, targets }
 }
 
+/// Create a new particle container that does not take over ownership.
 pub fn make_particle_container<'a, T: RealType>(
     sources: ArrayView2<'a, T>,
     targets: ArrayView2<'a, T>,
@@ -37,8 +37,7 @@ pub fn make_particle_container<'a, T: RealType>(
     ParticleContainerView { sources, targets }
 }
 
-// The basic data structure of this library for sources and targets
-// that are not owned by the structure.
+// The basic data structure of for sources and targets that are not owned.
 pub struct ParticleContainerView<'a, T: RealType> {
     sources: ArrayView2<'a, T>,
     targets: ArrayView2<'a, T>,

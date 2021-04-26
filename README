@@ -1,0 +1,4 @@
+# rusty-kernel-tools
+
+This is a very basic Rust library that contains data structures and types
+used throughout the other rusty-fast-solver packages.
