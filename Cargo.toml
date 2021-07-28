@@ -1,17 +1,19 @@
 [package]
-name = "rusty-kernel-tools"
+name = "rusty-base"
 version = "0.1.1"
 authors = ["Timo Betcke <timo.betcke@gmail.com>"]
 edition = "2018"
 license = "BSD-3-Clause"
 description = "Basic data structures for the rusty-fast-solvers set of packages."
-homepage = "https://github.com/rusty-fast-solvers/rusty-kernel-tools"
-repository = "https://github.com/rusty-fast-solvers/rusty-kernel-tools"
+homepage = "https://github.com/rusty-fast-solvers/rusty-base"
+repository = "https://github.com/rusty-fast-solvers/rusty-base"
 readme = "README"
 
 [lib]
-name = "rusty_kernel_tools"
+name = "rusty_base"
 
 [dependencies]
 num = "0.3"
 ndarray = "0.14"
+ndarray-linalg = "0.13"
+thiserror = "1.0"

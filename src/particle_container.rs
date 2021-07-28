@@ -1,18 +1,18 @@
 //! This module defines a simple container structure to store source particles and target particles
 //! in a convenient way.
 
-use crate::RealType;
 use ndarray::{Array2, ArrayView2};
+use crate::RealType;
 
 // This traits describes any type that provides an array of sources and
 // an array of targets.
 pub trait ParticleContainerAccessor {
-    type FloatingPointType: RealType;
+    type A: RealType;
 
     /// Return a non-owning representation of the sources.
-    fn sources(&self) -> ArrayView2<Self::FloatingPointType>;
+    fn sources(&self) -> ArrayView2<Self::A>;
     /// Return a non-owning representation of the targets.
-    fn targets(&self) -> ArrayView2<Self::FloatingPointType>;
+    fn targets(&self) -> ArrayView2<Self::A>;
 }
 
 /// The basic data structure for sources and targets that are owned.
@@ -38,35 +38,35 @@ pub fn make_particle_container<'a, T: RealType>(
 }
 
 // The basic data structure of for sources and targets that are not owned.
-pub struct ParticleContainerView<'a, T: RealType> {
+pub struct ParticleContainerView<'a, T: > {
     sources: ArrayView2<'a, T>,
     targets: ArrayView2<'a, T>,
 }
 
-impl<T: RealType> ParticleContainerAccessor for ParticleContainer<T> {
-    type FloatingPointType = T;
+impl<A: RealType> ParticleContainerAccessor for ParticleContainer<A> {
+    type A = A;
 
     /// Return a non-owning representation of the sources.
-    fn sources(&self) -> ArrayView2<Self::FloatingPointType> {
+    fn sources(&self) -> ArrayView2<Self::A> {
         self.sources.view()
     }
 
     /// Return a non-owning representation of the targets.
-    fn targets(&self) -> ArrayView2<Self::FloatingPointType> {
+    fn targets(&self) -> ArrayView2<Self::A> {
         self.targets.view()
     }
 }
 
-impl<'a, T: RealType> ParticleContainerAccessor for ParticleContainerView<'a, T> {
-    type FloatingPointType = T;
+impl<'a, A: RealType> ParticleContainerAccessor for ParticleContainerView<'a, A> {
+    type A = A;
 
     /// Return a non-owning representation of the sources.
-    fn sources(&self) -> ArrayView2<Self::FloatingPointType> {
+    fn sources(&self) -> ArrayView2<Self::A> {
         self.sources.view()
     }
 
     /// Return a non-owning representation of the targets.
-    fn targets(&self) -> ArrayView2<Self::FloatingPointType> {
+    fn targets(&self) -> ArrayView2<Self::A> {
         self.targets.view()
     }
 }
