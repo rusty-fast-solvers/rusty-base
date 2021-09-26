@@ -14,8 +14,12 @@ pub enum KernelType {
     ModifiedHelmholtz(f64),
 }
 
+// Our default type is the ndarray_linalg Scalar type
+pub use ndarray_linalg::Scalar;
+
 /// This trait specifies the required floating point properties for real types.
 /// Currently, we support f32 and f64.
+/// This type is specifically for operations that only make sense for real types.
 pub trait RealType:
     std::marker::Send
     + std::marker::Sync
@@ -29,6 +33,10 @@ impl<T: Send + Sync + num::traits::Float + num::traits::FloatConst + ndarray_lin
     RealType for T
 {
 }
+
+// Complex types
+pub use ndarray_linalg::c32;
+pub use ndarray_linalg::c64;
 
 /// Determines whether to use multithreading or serial evaluation.
 pub enum ThreadingType {
