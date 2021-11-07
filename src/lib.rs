@@ -13,6 +13,11 @@ pub use crate::types::ThreadingType;
 pub use crate::types::EvalMode;
 pub use crate::types::Result;
 
+pub use crate::types::MatVec;
+pub use crate::types::MatMat;
+pub use crate::types::ConjMatVec;
+pub use crate::types::ConjMatMat;
+
 pub use crate::particle_container::make_particle_container;
 pub use crate::particle_container::make_particle_container_owned;
 
